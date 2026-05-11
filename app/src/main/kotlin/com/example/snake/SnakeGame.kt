@@ -32,8 +32,7 @@ class SnakeGame(val cols: Int = 20, val rows: Int = 20) {
         spawnFood()
     }
 
-    fun setDirection(d: Direction) {
-        // Prevent reversing into itself
+    fun queueDirection(d: Direction) {
         val blocked = when (d) {
             Direction.UP -> direction == Direction.DOWN
             Direction.DOWN -> direction == Direction.UP

@@ -68,9 +68,9 @@ class SnakeView @JvmOverloads constructor(
                 val dy = event.y - touchY
                 if (abs(dx) < 20 && abs(dy) < 20) return true
                 if (abs(dx) > abs(dy)) {
-                    game.setDirection(if (dx > 0) Direction.RIGHT else Direction.LEFT)
+                    game.queueDirection(if (dx > 0) Direction.RIGHT else Direction.LEFT)
                 } else {
-                    game.setDirection(if (dy > 0) Direction.DOWN else Direction.UP)
+                    game.queueDirection(if (dy > 0) Direction.DOWN else Direction.UP)
                 }
             }
         }
