@@ -4,11 +4,16 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Snake body segments -->
-    <path android:fillColor="#4ecca3"
-        android:pathData="M30,54 Q30,30 54,30 Q78,30 78,54 Q78,70 62,70 L62,62 Q70,62 70,54 Q70,38 54,38 Q38,38 38,54 L38,70 L30,70 Z"/>
+    <!-- Snake body (S-curve) -->
+    <path
+        android:fillColor="#4ecca3"
+        android:pathData="M28,40 Q28,28 40,28 L68,28 Q80,28 80,40 L80,52 Q80,60 72,60 L44,60 Q36,60 36,68 L36,80 Q36,88 44,88 L64,88 Q72,88 72,80 L72,72 L64,72 L64,80 Q64,80 64,80 L44,80 Q44,80 44,68 L44,60 Z"/>
     <!-- Head -->
-    <rect android:fillColor="#4ecca3" android:x="54" android:y="58" android:width="16" android:height="16" android:rx="4"/>
+    <path
+        android:fillColor="#4ecca3"
+        android:pathData="M68,28 Q80,28 80,40 L80,52 L68,52 L68,28 Z"/>
     <!-- Food dot -->
-    <circle android:fillColor="#e94560" android:cx="80" android:cy="74" android:r="6"/>
+    <path
+        android:fillColor="#e94560"
+        android:pathData="M80,72 m-8,0 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0"/>
 </vector>
