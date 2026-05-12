@@ -1,8 +1,6 @@
 package com.example.snake
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -10,7 +8,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var snakeView: SnakeView
     private lateinit var scoreText: TextView
-    private lateinit var restartButton: Button
+    private lateinit var bestText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,18 +16,13 @@ class MainActivity : AppCompatActivity() {
 
         snakeView = findViewById(R.id.snake_view)
         scoreText = findViewById(R.id.score_text)
-        restartButton = findViewById(R.id.restart_button)
+        bestText = findViewById(R.id.best_text)
 
         snakeView.onScoreChanged = { score ->
-            runOnUiThread { scoreText.text = "Score: $score" }
+            runOnUiThread { scoreText.text = "Score  $score" }
         }
-        snakeView.onGameOver = {
-            runOnUiThread { restartButton.visibility = android.view.View.VISIBLE }
-        }
-
-        restartButton.setOnClickListener {
-            restartButton.visibility = android.view.View.GONE
-            snakeView.restart()
+        snakeView.onBestChanged = { best ->
+            runOnUiThread { bestText.text = "Best  $best" }
         }
     }
 
