@@ -32,6 +32,7 @@ class SnakeView @JvmOverloads constructor(
     var onScoreChanged: ((Int) -> Unit)? = null
     var onBestChanged: ((Int) -> Unit)? = null
 
+    // --- Paints ---
     private val bgPaint = Paint().apply { color = Color.parseColor("#0f0f23") }
     private val gridPaint = Paint().apply {
         color = Color.parseColor("#16213e")
@@ -40,6 +41,7 @@ class SnakeView @JvmOverloads constructor(
     }
     private val foodPaint = Paint().apply { color = Color.parseColor("#e94560"); isAntiAlias = true }
     private val foodGlowPaint = Paint().apply {
+        // #AARRGGBB: alpha=55 (~33%), color=e94560
         color = Color.parseColor("#55e94560")
         isAntiAlias = true
     }
@@ -77,6 +79,8 @@ class SnakeView @JvmOverloads constructor(
 
     private val rect = RectF()
 
+    // --- Runnables ---
+
     private val gameTick = object : Runnable {
         override fun run() {
             if (state != GameState.PLAYING) return
@@ -96,6 +100,7 @@ class SnakeView @JvmOverloads constructor(
         }
     }
 
+    // Drives food pulse animation between game ticks
     private val animTick = object : Runnable {
         override fun run() {
             if (state != GameState.PLAYING) return
@@ -118,6 +123,8 @@ class SnakeView @JvmOverloads constructor(
             }
         }
     }
+
+    // --- Touch ---
 
     private var touchX = 0f
     private var touchY = 0f
@@ -145,6 +152,8 @@ class SnakeView @JvmOverloads constructor(
         }
         return true
     }
+
+    // --- Lifecycle ---
 
     fun restart() {
         handler.removeCallbacks(gameTick)
@@ -174,6 +183,8 @@ class SnakeView @JvmOverloads constructor(
             GameState.GAME_OVER -> {}
         }
     }
+
+    // --- Drawing ---
 
     override fun onDraw(canvas: Canvas) {
         val w = width.toFloat()
