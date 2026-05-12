@@ -15,6 +15,9 @@ class SnakeGame(val cols: Int = 20, val rows: Int = 20) {
     var score: Int = 0
     var isGameOver: Boolean = false
 
+    // Speed increases with score: 150ms → 60ms floor
+    val tickMs: Long get() = maxOf(60L, 150L - score * 5L)
+
     init {
         reset()
     }
